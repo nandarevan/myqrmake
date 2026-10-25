@@ -22,7 +22,7 @@ const SAMPLE_LOGO_DATA_URL =
   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23000000'/><circle cx='50' cy='50' r='28' fill='%230284c7'/><path d='M38 50 L46 58 L62 40' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>";
 
 const DEFAULT_QR_CONFIG: QRConfig = {
-  content: "https://myqrmake.vercel.app",
+  content: "",
   errorCorrectionLevel: "H",
   moduleStyle: "square",
   eyeStyle: "square",
@@ -109,10 +109,6 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sea-50 border border-sea-200 text-sea-800 text-xs font-semibold mb-3">
-                <span className="w-2 h-2 rounded-full bg-sea animate-pulse" />
-                <span>Next.js App Router · Ultra Minimalist Design</span>
-              </div>
               <h1 className="text-3xl sm:text-4xl font-extrabold text-black tracking-tight leading-tight">
                 MyQR Make
               </h1>
@@ -211,15 +207,14 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Quick Architecture & Scannability Specs */}
+            {/* Friendly Scannability Information */}
             <div className="p-4 rounded-xl border border-black/10 bg-white space-y-2 text-xs text-black/70">
               <div className="flex items-center gap-2 font-bold text-black">
                 <Info className="w-4 h-4 text-sea" />
-                <span>Architecture Guarantee</span>
+                <span>Petunjuk Pemindaian</span>
               </div>
               <p className="leading-relaxed">
-                Rendered with Reed Solomon Level H error correction (30% redundancy). 
-                Logo placement strictly prevents finder pattern overlap, ensuring zero fail scanning on iOS and Android.
+                QR code dibuat dengan ketahanan tinggi agar tetap terbaca jelas meskipun logo diletakkan di tengah. Kompatibel dengan semua kamera smartphone Android dan iPhone.
               </p>
             </div>
           </div>

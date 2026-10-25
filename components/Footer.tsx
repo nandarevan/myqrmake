@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo_myqrmake.jpg"
-              alt="Myqrmake"
+              alt="MyQR Make"
               className="w-full h-full object-cover"
               onError={(e) => {
                 (e.currentTarget as HTMLElement).style.display = "none";

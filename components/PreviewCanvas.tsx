@@ -176,9 +176,9 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
       <div className="w-full pt-3 border-t border-black/10 flex items-center justify-between text-xs">
         <div className="flex items-center gap-1.5 text-black/70">
           <ShieldCheck className="w-4 h-4 text-sea" />
-          <span className="font-semibold text-black">High ECC (30%)</span>
+          <span className="font-semibold text-black">Kualitas Tinggi</span>
           <span className="text-black/40">·</span>
-          <span>100% Read Guarantee</span>
+          <span>Mudah Dipindai Semua Perangkat</span>
         </div>
 
         <div className="text-[11px] font-mono text-black/50">

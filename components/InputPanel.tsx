@@ -45,12 +45,8 @@ export const InputPanel: React.FC<InputPanelProps> = ({
               <span>1. Enter Your Link or Text</span>
             </label>
             <p className="text-[11px] text-black/50 mt-0.5">
-              Type or paste your website URL, social link, or message
+              Ketik atau tempel link website, teks, atau media sosial
             </p>
-          </div>
-          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-sea-50 border border-sea-200 text-sea-700 text-[11px] font-medium shrink-0">
-            <Shield className="w-3 h-3 text-sea" />
-            <span>ECC Level: High (30%)</span>
           </div>
         </div>
 
@@ -82,7 +78,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
           <textarea
             value={config.content}
             onChange={(e) => onChange({ content: e.target.value })}
-            placeholder="Type or paste your link or text here..."
+            placeholder="Ketik atau tempel link di sini..."
             rows={3}
             className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-black/20 bg-white text-black placeholder:text-black/40 focus:outline-none focus:border-sea focus:ring-2 focus:ring-sea/20 transition-all resize-none font-mono"
           />
