@@ -59,7 +59,7 @@ export const ExportBar: React.FC<ExportBarProps> = ({
 
       const dataUrl = offscreenCanvas.toDataURL("image/png", 1.0);
       const link = document.createElement("a");
-      const cleanName = "LogoQR_Studio_" + (mode === "qr-with-logo" ? "CustomLogo" : "QR") + "_" + exportResolution + "px.png";
+      const cleanName = "Myqrmake_" + (mode === "qr-with-logo" ? "CustomLogo" : "QR") + "_" + exportResolution + "px.png";
       link.download = cleanName;
       link.href = dataUrl;
       link.click();
@@ -92,7 +92,7 @@ export const ExportBar: React.FC<ExportBarProps> = ({
         qrConfig,
         logoConfig,
         mode,
-        filename: "LogoQR_Studio_Document_2026.pdf",
+        filename: "Myqrmake_Document_2026.pdf",
       });
 
       triggerCelebration();

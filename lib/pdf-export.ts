@@ -14,7 +14,7 @@ export function exportQRCodeToPDF({
   qrConfig,
   logoConfig,
   mode,
-  filename = "LogoQR_Studio_Document.pdf",
+  filename = "Myqrmake_Document_2026.pdf",
 }: PDFExportOptions) {
   // A4 portrait dimensions: 210 x 297 mm
   const doc = new jsPDF({
@@ -34,87 +34,39 @@ export function exportQRCodeToPDF({
   doc.setFillColor(2, 132, 199);
   doc.rect(0, 0, pageWidth, 4, "F");
 
-  // Header Title
+  // Header Title: Myqrmake
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(22);
+  doc.setFontSize(24);
   doc.setTextColor(0, 0, 0); // Deep Black
-  doc.text("LogoQR Studio", 20, 24);
+  doc.text("Myqrmake", 20, 26);
 
   // Subtitle / Tagline
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
   doc.setTextColor(100, 100, 100);
-  doc.text("Professional High Resolution QR Code Document", 20, 31);
+  doc.text("Professional High Resolution QR Code Document", 20, 33);
 
   // Subtle separator line
   doc.setDrawColor(229, 231, 235);
   doc.setLineWidth(0.4);
-  doc.line(20, 36, pageWidth - 20, 36);
+  doc.line(20, 38, pageWidth - 20, 38);
 
   // QR Code Image in Center
-  const qrImageSize = 110; // 110mm x 110mm
+  const qrImageSize = 130; // 130mm x 130mm (large, crisp, prominent)
   const qrX = (pageWidth - qrImageSize) / 2;
-  const qrY = 48;
+  const qrY = 75; // Perfectly balanced vertical centering
 
   // Outer subtle frame around QR
-  doc.setDrawColor(240, 240, 240);
+  doc.setDrawColor(230, 230, 230);
   doc.setFillColor(255, 255, 255);
-  doc.roundedRect(qrX - 5, qrY - 5, qrImageSize + 10, qrImageSize + 10, 4, 4, "FD");
+  doc.roundedRect(qrX - 6, qrY - 6, qrImageSize + 12, qrImageSize + 12, 4, 4, "FD");
 
   // Convert canvas to PNG data URL
   const qrDataUrl = canvas.toDataURL("image/png", 1.0);
   doc.addImage(qrDataUrl, "PNG", qrX, qrY, qrImageSize, qrImageSize);
 
-  // Content Details Card
-  const cardY = qrY + qrImageSize + 16;
-  const cardWidth = pageWidth - 40;
-  const cardHeight = 44;
-
-  doc.setDrawColor(229, 231, 235);
-  doc.setFillColor(255, 255, 255);
-  doc.roundedRect(20, cardY, cardWidth, cardHeight, 3, 3, "D");
-
-  // Sea Blue small indicator dot
-  doc.setFillColor(2, 132, 199);
-  doc.circle(28, cardY + 11, 2, "F");
-
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10);
-  doc.setTextColor(0, 0, 0);
-  doc.text("Encoded Content", 34, cardY + 12);
-
-  // Truncate content text safely if long
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(9);
-  doc.setTextColor(60, 60, 60);
-  const rawContent = qrConfig.content || "https://logoqrstudio.vercel.app";
-  const displayContent =
-    rawContent.length > 85 ? rawContent.substring(0, 82) + "..." : rawContent;
-  doc.text(displayContent, 34, cardY + 19);
-
-  // Metadata Grid inside Card
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(8);
-  doc.setTextColor(120, 120, 120);
-  doc.text("GENERATION MODE", 34, cardY + 29);
-  doc.text("ERROR CORRECTION", 90, cardY + 29);
-  doc.text("CREATED", 146, cardY + 29);
-
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(9);
-  doc.setTextColor(0, 0, 0);
-
-  const modeLabel =
-    mode === "qr-with-logo" ? "QR with Custom Logo" : "Standard QR Code";
-  doc.text(modeLabel, 34, cardY + 36);
-  doc.text("High (30% redundancy)", 90, cardY + 36);
-
-  const now = new Date();
-  const dateStr = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, "0")}.${String(now.getDate()).padStart(2, "0")}`;
-  doc.text(dateStr, 146, cardY + 36);
-
-  // Instructions & Scan Tip
-  const tipY = cardY + cardHeight + 14;
+  // Scan instruction directly under QR (Clean & Minimalist)
+  const tipY = qrY + qrImageSize + 16;
   doc.setFont("helvetica", "bold");
   doc.setFontSize(9);
   doc.setTextColor(2, 132, 199); // Sea Blue
@@ -139,8 +91,8 @@ export function exportQRCodeToPDF({
   doc.setFontSize(9);
   doc.setTextColor(120, 120, 120);
 
-  // Strictly no hyphens or dashes as explicitly instructed
-  const footerLeft = "LogoQR Studio · Ultra Minimalist Engine";
+  // Footer Left & Right: Myqrmake · Ultra Minimalist Engine & Nanda Revan Saputro 2026
+  const footerLeft = "Myqrmake · Ultra Minimalist Engine";
   const footerRight = "Nanda Revan Saputro 2026";
 
   doc.text(footerLeft, 20, footerY);

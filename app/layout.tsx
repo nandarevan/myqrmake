@@ -2,20 +2,20 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LogoQR Studio · Minimalist High Precision QR & Logo Generator",
+  title: "Myqrmake · Minimalist High Precision QR & Logo Generator",
   description:
     "Production ready ultra minimalist QR code generator with dual menu modes, custom logo upload, flexible positioning, high error correction, and instant PDF/Image export.",
   keywords: [
     "QR Code Generator",
     "Custom Logo QR",
-    "LogoQR Studio",
+    "Myqrmake",
     "High Resolution QR",
     "PDF QR Export",
     "Minimalist QR",
   ],
   authors: [{ name: "Nanda Revan Saputro" }],
   openGraph: {
-    title: "LogoQR Studio · Ultra Minimalist QR & Logo Generator",
+    title: "Myqrmake · Ultra Minimalist QR & Logo Generator",
     description:
       "Generate clean QR codes and embed custom brand logos with flexible positioning and vector PDF export.",
     type: "website",

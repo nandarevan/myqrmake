@@ -22,7 +22,7 @@ const SAMPLE_LOGO_DATA_URL =
   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23000000'/><circle cx='50' cy='50' r='28' fill='%230284c7'/><path d='M38 50 L46 58 L62 40' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>";
 
 const DEFAULT_QR_CONFIG: QRConfig = {
-  content: "https://logoqrstudio.vercel.app",
+  content: "https://myqrmake.vercel.app",
   errorCorrectionLevel: "H",
   moduleStyle: "square",
   eyeStyle: "square",
@@ -77,15 +77,15 @@ export default function Home() {
     setMode("qr-with-logo");
     setLogoConfig({
       file: null,
-      dataUrl: SAMPLE_LOGO_DATA_URL,
-      name: "Sample_Brand_Logo.svg",
-      sizeBytes: 1024,
-      width: 512,
-      height: 512,
+      dataUrl: "/logo_myqrmake.jpg",
+      name: "logo_myqrmake.jpg",
+      sizeBytes: 1249990,
+      width: 800,
+      height: 800,
       position: "center",
       scale: 0.22,
       shape: "rounded",
-      padding: 10,
+      padding: 8,
     });
   };
 
@@ -104,7 +104,7 @@ export default function Home() {
                 <span>Next.js App Router · Ultra Minimalist Design</span>
               </div>
               <h1 className="text-3xl sm:text-4xl font-extrabold text-black tracking-tight leading-tight">
-                LogoQR Studio
+                Myqrmake
               </h1>
               <p className="text-sm sm:text-base text-black/60 max-w-2xl mt-1.5">
                 Generate high precision QR codes with seamless logo positioning, 

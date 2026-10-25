@@ -170,7 +170,7 @@ export async function renderQRCodeToCanvas({
   const ctx = canvas.getContext("2d", { willReadFrequently: true });
   if (!ctx) return;
 
-  const content = qrConfig.content.trim() || "https://logoqrstudio.vercel.app";
+  const content = qrConfig.content.trim() || "https://myqrmake.vercel.app";
 
   // Create QR instance with High error correction level
   const qr = QRCode.create(content, {
