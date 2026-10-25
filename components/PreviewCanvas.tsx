@@ -8,6 +8,7 @@ import {
   Check,
   ShieldCheck,
   Eye,
+  Link as LinkIcon,
 } from "lucide-react";
 import { QRConfig, LogoConfig, ModeType } from "@/types";
 import { renderQRCodeToCanvas } from "@/lib/qr-generator";
@@ -169,6 +170,21 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
               <span className="w-5 h-5 border-2 border-sea border-t-transparent rounded-full animate-spin" />
             </div>
           )}
+        </div>
+      </div>
+
+      {/* Active Content Box directly below QR */}
+      <div className="w-full my-3 p-3 rounded-xl border border-black/15 bg-black/[0.02] flex items-center gap-2.5 text-xs">
+        <div className="w-7 h-7 rounded-lg bg-sea-50 border border-sea-200 text-sea flex items-center justify-center shrink-0">
+          <LinkIcon className="w-3.5 h-3.5 text-sea" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <span className="text-[10px] uppercase font-bold text-black/50 block tracking-wider">
+            Isi Tautan QR
+          </span>
+          <p className="font-mono text-xs text-black truncate select-all">
+            {qrConfig.content.trim() || "https://myqrmake.vercel.app"}
+          </p>
         </div>
       </div>
 

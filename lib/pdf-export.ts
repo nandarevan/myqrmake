@@ -52,33 +52,68 @@ export function exportQRCodeToPDF({
   doc.line(20, 38, pageWidth - 20, 38);
 
   // QR Code Image in Center
-  const qrImageSize = 130; // 130mm x 130mm (large, crisp, prominent)
+  const qrImageSize = 120; // 120mm x 120mm (crisp and balanced)
   const qrX = (pageWidth - qrImageSize) / 2;
-  const qrY = 75; // Perfectly balanced vertical centering
+  const qrY = 56;
 
   // Outer subtle frame around QR
   doc.setDrawColor(230, 230, 230);
   doc.setFillColor(255, 255, 255);
-  doc.roundedRect(qrX - 6, qrY - 6, qrImageSize + 12, qrImageSize + 12, 4, 4, "FD");
+  doc.roundedRect(qrX - 5, qrY - 5, qrImageSize + 10, qrImageSize + 10, 4, 4, "FD");
 
   // Convert canvas to PNG data URL
   const qrDataUrl = canvas.toDataURL("image/png", 1.0);
   doc.addImage(qrDataUrl, "PNG", qrX, qrY, qrImageSize, qrImageSize);
 
-  // Scan instruction directly under QR (Clean & Minimalist)
-  const tipY = qrY + qrImageSize + 16;
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(9);
-  doc.setTextColor(2, 132, 199); // Sea Blue
-  doc.text("Scan Tip:", 20, tipY);
+  // Box displaying entered link/payload directly below QR
+  const displayContent = qrConfig.content.trim() || "https://myqrmake.vercel.app";
+  const cardWidth = 150;
+  const cardX = (pageWidth - cardWidth) / 2;
+  const cardY = qrY + qrImageSize + 14;
 
+  doc.setFont("courier", "normal");
+  doc.setFontSize(8.5);
+  const textLines = doc.splitTextToSize(displayContent, cardWidth - 20);
+  const maxLines = Math.min(textLines.length, 3);
+  const cardHeight = 22 + (maxLines - 1) * 5;
+
+  // Box background & subtle border
+  doc.setFillColor(248, 250, 252);
+  doc.setDrawColor(220, 225, 230);
+  doc.setLineWidth(0.4);
+  doc.roundedRect(cardX, cardY, cardWidth, cardHeight, 3, 3, "FD");
+
+  // Sea Blue left indicator bar
+  doc.setFillColor(2, 132, 199);
+  doc.roundedRect(cardX, cardY, 3, cardHeight, 1.5, 1.5, "F");
+
+  // Label inside card
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(8.5);
+  doc.setTextColor(2, 132, 199); // Sea Blue
+  doc.text("Isi Tautan QR:", cardX + 8, cardY + 7.5);
+
+  // Content text lines
+  doc.setFont("courier", "normal");
+  doc.setFontSize(8.5);
+  doc.setTextColor(0, 0, 0); // Deep Black
+  for (let i = 0; i < maxLines; i++) {
+    const lineText = (i === maxLines - 1 && textLines.length > maxLines)
+      ? textLines[i].slice(0, -3) + "..."
+      : textLines[i];
+    doc.text(lineText, cardX + 8, cardY + 15 + i * 5);
+  }
+
+  // Scan instruction under the box
+  const tipY = cardY + cardHeight + 10;
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(9);
-  doc.setTextColor(100, 100, 100);
+  doc.setFontSize(8.5);
+  doc.setTextColor(120, 120, 120);
   doc.text(
-    "Point your smartphone camera or QR scanner directly at the code. High error correction guarantees instant read.",
-    38,
-    tipY
+    "Arahkan kamera smartphone ke kode QR untuk membuka tautan secara instan",
+    pageWidth / 2,
+    tipY,
+    { align: "center" }
   );
 
   // Bottom Footer: STRICTLY NO HYPHENS OR DASHES
