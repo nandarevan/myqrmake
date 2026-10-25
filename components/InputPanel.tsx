@@ -17,6 +17,8 @@ import { QRConfig, ModuleStyle, EyeStyle } from "@/types";
 interface InputPanelProps {
   config: QRConfig;
   onChange: (updated: Partial<QRConfig>) => void;
+  hasLogo?: boolean;
+  children?: React.ReactNode;
 }
 
 const PRESETS = [
@@ -27,16 +29,26 @@ const PRESETS = [
   { label: "Contact", icon: User, sample: "BEGIN:VCARD\nVERSION:3.0\nFN:Nanda Revan\nEMAIL:nanda@example.com\nEND:VCARD" },
 ];
 
-export const InputPanel: React.FC<InputPanelProps> = ({ config, onChange }) => {
+export const InputPanel: React.FC<InputPanelProps> = ({
+  config,
+  onChange,
+  hasLogo = false,
+  children,
+}) => {
   return (
     <div className="space-y-6">
-      {/* 1. Content Input Section */}
+      {/* 1. Friendly Content Input Section */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-bold tracking-wider text-black uppercase flex items-center gap-2">
-            <span>1. Content & Payload</span>
-          </label>
-          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-sea-50 border border-sea-200 text-sea-700 text-[11px] font-medium">
+          <div>
+            <label className="text-xs font-bold tracking-wider text-black uppercase flex items-center gap-2">
+              <span>1. Enter Your Link or Text</span>
+            </label>
+            <p className="text-[11px] text-black/50 mt-0.5">
+              Type or paste your website URL, social link, or message
+            </p>
+          </div>
+          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-sea-50 border border-sea-200 text-sea-700 text-[11px] font-medium shrink-0">
             <Shield className="w-3 h-3 text-sea" />
             <span>ECC Level: High (30%)</span>
           </div>
@@ -70,7 +82,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({ config, onChange }) => {
           <textarea
             value={config.content}
             onChange={(e) => onChange({ content: e.target.value })}
-            placeholder="Enter URL, text, phone, or raw data here..."
+            placeholder="Type or paste your link or text here..."
             rows={3}
             className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-black/20 bg-white text-black placeholder:text-black/40 focus:outline-none focus:border-sea focus:ring-2 focus:ring-sea/20 transition-all resize-none font-mono"
           />
@@ -80,10 +92,17 @@ export const InputPanel: React.FC<InputPanelProps> = ({ config, onChange }) => {
         </div>
       </div>
 
-      {/* 2. QR Code Pattern & Styling Options */}
+      {/* Embedded Logo Panel (in Mode 2, positioned directly below Section 1) */}
+      {children && (
+        <div className="pt-6 border-t border-black/10 animate-fadeIn">
+          {children}
+        </div>
+      )}
+
+      {/* Grid & Pattern Styling Options (Section 2 or 3) */}
       <div className="space-y-4 pt-4 border-t border-black/10">
         <label className="text-xs font-bold tracking-wider text-black uppercase flex items-center gap-2">
-          <span>2. Grid & Pattern Styling</span>
+          <span>{hasLogo ? "3. Grid & Pattern Styling" : "2. Grid & Pattern Styling"}</span>
         </label>
 
         {/* Module Shapes */}

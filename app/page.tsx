@@ -164,19 +164,20 @@ export default function Home() {
 
             {/* 2. Control Panels in Card */}
             <div className="p-6 rounded-2xl border border-black/15 bg-white shadow-card space-y-6">
-              {/* Input & QR Grid Customization */}
-              <InputPanel config={qrConfig} onChange={handleQRChange} />
-
-              {/* Mode 2: Exclusive Logo Panel */}
-              {mode === "qr-with-logo" && (
-                <div className="pt-6 border-t border-black/10 animate-fadeIn">
+              {/* Input & QR Grid Customization with Logo Panel right below Section 1 */}
+              <InputPanel
+                config={qrConfig}
+                onChange={handleQRChange}
+                hasLogo={mode === "qr-with-logo"}
+              >
+                {mode === "qr-with-logo" && (
                   <LogoPanel
                     config={logoConfig}
                     onChange={handleLogoChange}
                     onClear={handleClearLogo}
                   />
-                </div>
-              )}
+                )}
+              </InputPanel>
             </div>
           </div>
 

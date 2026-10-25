@@ -114,9 +114,14 @@ export const LogoPanel: React.FC<LogoPanelProps> = ({
       {/* 1. Logo Uploader */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-bold tracking-wider text-black uppercase flex items-center gap-2">
-            <span>Logo Asset (PNG, JPEG, SVG)</span>
-          </label>
+          <div>
+            <label className="text-xs font-bold tracking-wider text-black uppercase flex items-center gap-2">
+              <span>2. Add & Position Your Custom Logo</span>
+            </label>
+            <p className="text-[11px] text-black/50 mt-0.5">
+              Upload your brand logo (PNG, JPEG, SVG) and choose its spot
+            </p>
+          </div>
           {config.dataUrl && (
             <button
               type="button"
