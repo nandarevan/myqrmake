@@ -1,4 +1,4 @@
-# Myqrmake
+# MyQR Make
 
 > Production ready, ultra minimalist, high precision QR Code generator with custom logo positioning and dual export engine (High Resolution Image & Professional PDF). Built with **Next.js 14 App Router**, **Tailwind CSS**, and **Lucide React**.
 
@@ -6,7 +6,7 @@
 
 ## 🎨 Design System & Strict 3 Color Palette
 
-Myqrmake strictly adheres to an ultra clean, modern, flat design system using only 3 colors across the entire user interface:
+MyQR Make strictly adheres to an ultra clean, modern, flat design system using only 3 colors across the entire user interface:
 1. **Pure White (`#ffffff`)**: Clean backgrounds, card containers, and quiet zones.
 2. **Deep Black (`#000000`)**: Primary typography, structural borders, dark accents, and default QR modules.
 3. **Sea Blue (`#0284c7`)**: Sole brand accent color for primary buttons, active tabs, hover transitions, and focus rings.
@@ -118,4 +118,4 @@ This repository is fully configured for seamless zero-config deployment on Verce
 
 ## 📜 Credits & License
 
-Myqrmake · 2026 Nanda Revan Saputro
+MyQR Make · 2026 Nanda Revan Saputro

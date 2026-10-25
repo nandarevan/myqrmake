@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
               }}
             />
           </div>
-          <span className="font-semibold text-black">Myqrmake</span>
+          <span className="font-semibold text-black">MyQR Make</span>
           <span>·</span>
           <span>Zero Config Vercel Ready</span>
         </div>

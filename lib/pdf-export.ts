@@ -14,7 +14,7 @@ export function exportQRCodeToPDF({
   qrConfig,
   logoConfig,
   mode,
-  filename = "Myqrmake_Document_2026.pdf",
+  filename = "MyQR_Make_Document_2026.pdf",
 }: PDFExportOptions) {
   // A4 portrait dimensions: 210 x 297 mm
   const doc = new jsPDF({
@@ -34,11 +34,11 @@ export function exportQRCodeToPDF({
   doc.setFillColor(2, 132, 199);
   doc.rect(0, 0, pageWidth, 4, "F");
 
-  // Header Title: Myqrmake
+  // Header Title: MyQR Make
   doc.setFont("helvetica", "bold");
   doc.setFontSize(24);
   doc.setTextColor(0, 0, 0); // Deep Black
-  doc.text("Myqrmake", 20, 26);
+  doc.text("MyQR Make", 20, 26);
 
   // Subtitle / Tagline
   doc.setFont("helvetica", "normal");
@@ -91,8 +91,8 @@ export function exportQRCodeToPDF({
   doc.setFontSize(9);
   doc.setTextColor(120, 120, 120);
 
-  // Footer Left & Right: Myqrmake · Ultra Minimalist Engine & Nanda Revan Saputro 2026
-  const footerLeft = "Myqrmake · Ultra Minimalist Engine";
+  // Footer Left & Right: MyQR Make · Ultra Minimalist Engine & Nanda Revan Saputro 2026
+  const footerLeft = "MyQR Make · Ultra Minimalist Engine";
   const footerRight = "Nanda Revan Saputro 2026";
 
   doc.text(footerLeft, 20, footerY);

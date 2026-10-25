@@ -2,31 +2,51 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Myqrmake · Minimalist High Precision QR & Logo Generator",
+  metadataBase: new URL("https://myqrmake.vercel.app"),
+  title: "MyQR Make · Minimalist High Precision QR & Logo Generator",
   description:
-    "Production ready ultra minimalist QR code generator with dual menu modes, custom logo upload, flexible positioning, high error correction, and instant PDF/Image export.",
+    "Generate custom QR codes with high precision logo positioning, automatic 30% error correction, and instant high resolution image and PDF export.",
   keywords: [
     "QR Code Generator",
     "Custom Logo QR",
-    "Myqrmake",
+    "MyQR Make",
     "High Resolution QR",
     "PDF QR Export",
     "Minimalist QR",
   ],
   authors: [{ name: "Nanda Revan Saputro" }],
   openGraph: {
-    title: "Myqrmake · Ultra Minimalist QR & Logo Generator",
+    title: "MyQR Make · Minimalist High Precision QR & Logo Generator",
     description:
-      "Generate clean QR codes and embed custom brand logos with flexible positioning and vector PDF export.",
+      "Generate custom QR codes with high precision logo positioning, automatic 30% error correction, and instant high resolution image and PDF export.",
+    url: "https://myqrmake.vercel.app",
+    siteName: "MyQR Make",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MyQR Make Logo",
+      },
+    ],
+    locale: "id_ID",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MyQR Make · Minimalist High Precision QR & Logo Generator",
+    description:
+      "Generate custom QR codes with high precision logo positioning, automatic 30% error correction, and instant high resolution image and PDF export.",
+    images: ["/og-image.jpg"],
   },
   icons: {
     icon: [
-      { url: "/logo_myqrmake.jpg" },
       { url: "/favicon.ico" },
+      { url: "/logo_square.jpg" },
+      { url: "/logo_myqrmake.jpg" },
     ],
-    shortcut: "/logo_myqrmake.jpg",
-    apple: "/logo_myqrmake.jpg",
+    shortcut: "/favicon.ico",
+    apple: "/logo_square.jpg",
   },
 };
 

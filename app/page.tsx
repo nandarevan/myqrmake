@@ -114,7 +114,7 @@ export default function Home() {
                 <span>Next.js App Router · Ultra Minimalist Design</span>
               </div>
               <h1 className="text-3xl sm:text-4xl font-extrabold text-black tracking-tight leading-tight">
-                Myqrmake
+                MyQR Make
               </h1>
               <p className="text-sm sm:text-base text-black/60 max-w-2xl mt-1.5">
                 Generate high precision QR codes with seamless logo positioning, 

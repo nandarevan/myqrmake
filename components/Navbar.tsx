@@ -27,7 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onReset }) => {
           <div>
             <div className="flex items-center gap-2">
               <span className="font-bold text-lg tracking-tight text-black">
-                Myqrmake
+                MyQR Make
               </span>
               <span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-sea-50 text-sea-700 border border-sea-200">
                 Studio Edition

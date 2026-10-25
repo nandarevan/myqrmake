@@ -21,7 +21,7 @@ interface InputPanelProps {
 
 const PRESETS = [
   { label: "URL", icon: LinkIcon, sample: "https://myqrmake.vercel.app" },
-  { label: "Text", icon: Type, sample: "Welcome to Myqrmake 2026" },
+  { label: "Text", icon: Type, sample: "Welcome to MyQR Make 2026" },
   { label: "WiFi", icon: Wifi, sample: "WIFI:S:MyNetwork;T:WPA;P:SecurePass2026;;" },
   { label: "Email", icon: Mail, sample: "mailto:hello@myqrmake.com?subject=Inquiry" },
   { label: "Contact", icon: User, sample: "BEGIN:VCARD\nVERSION:3.0\nFN:Nanda Revan\nEMAIL:nanda@example.com\nEND:VCARD" },

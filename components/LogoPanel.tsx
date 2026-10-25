@@ -46,7 +46,7 @@ export const LogoPanel: React.FC<LogoPanelProps> = ({
         hasWarning: true,
         type: "file-size",
         message: `High file size (${(config.sizeBytes / (1024 * 1024)).toFixed(1)} MB). Large files may slow down rendering on mobile devices.`,
-        recommendation: "Myqrmake automatically renders high DPI canvas downscaled.",
+        recommendation: "MyQR Make automatically renders high DPI canvas downscaled.",
       };
     }
 
