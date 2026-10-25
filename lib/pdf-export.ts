@@ -7,6 +7,7 @@ interface PDFExportOptions {
   logoConfig?: LogoConfig | null;
   mode: "only-qr" | "qr-with-logo";
   filename?: string;
+  lang?: "id" | "en";
 }
 
 export function exportQRCodeToPDF({
@@ -15,6 +16,7 @@ export function exportQRCodeToPDF({
   logoConfig,
   mode,
   filename = "MyQR_Make_Document_2026.pdf",
+  lang = "id",
 }: PDFExportOptions) {
   // A4 portrait dimensions: 210 x 297 mm
   const doc = new jsPDF({
@@ -44,7 +46,11 @@ export function exportQRCodeToPDF({
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
   doc.setTextColor(100, 100, 100);
-  doc.text("Professional High Resolution QR Code Document", 20, 33);
+  const subtitle =
+    lang === "en"
+      ? "Professional High Resolution QR Code Document"
+      : "Dokumen QR Code Kualitas Tinggi";
+  doc.text(subtitle, 20, 33);
 
   // Subtle separator line
   doc.setDrawColor(229, 231, 235);
@@ -91,7 +97,8 @@ export function exportQRCodeToPDF({
   doc.setFont("helvetica", "bold");
   doc.setFontSize(8.5);
   doc.setTextColor(2, 132, 199); // Sea Blue
-  doc.text("Isi Tautan QR:", cardX + 8, cardY + 7.5);
+  const payloadLabel = lang === "en" ? "QR Code Link Payload:" : "Isi Tautan QR:";
+  doc.text(payloadLabel, cardX + 8, cardY + 7.5);
 
   // Content text lines
   doc.setFont("courier", "normal");
@@ -109,12 +116,11 @@ export function exportQRCodeToPDF({
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8.5);
   doc.setTextColor(120, 120, 120);
-  doc.text(
-    "Arahkan kamera smartphone ke kode QR untuk membuka tautan secara instan",
-    pageWidth / 2,
-    tipY,
-    { align: "center" }
-  );
+  const scanTip =
+    lang === "en"
+      ? "Point your smartphone camera at the QR code to open link instantly"
+      : "Arahkan kamera smartphone ke kode QR untuk membuka tautan secara instan";
+  doc.text(scanTip, pageWidth / 2, tipY, { align: "center" });
 
   // Bottom Footer: STRICTLY NO HYPHENS OR DASHES
   const footerY = pageHeight - 16;

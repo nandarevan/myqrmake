@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { ModeToggle } from "@/components/ModeToggle";
 import { InputPanel } from "@/components/InputPanel";
@@ -9,17 +9,11 @@ import { PreviewCanvas } from "@/components/PreviewCanvas";
 import { ExportBar } from "@/components/ExportBar";
 import { Footer } from "@/components/Footer";
 import { QRConfig, LogoConfig, ModeType } from "@/types";
+import { translations, Language } from "@/lib/translations";
 import {
   Sparkles,
   Info,
-  CheckCircle,
-  HelpCircle,
-  ArrowRight,
-  SlidersHorizontal,
 } from "lucide-react";
-
-const SAMPLE_LOGO_DATA_URL =
-  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23000000'/><circle cx='50' cy='50' r='28' fill='%230284c7'/><path d='M38 50 L46 58 L62 40' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>";
 
 const DEFAULT_QR_CONFIG: QRConfig = {
   content: "",
@@ -45,10 +39,68 @@ const DEFAULT_LOGO_CONFIG: LogoConfig = {
 };
 
 export default function Home() {
+  const [lang, setLang] = useState<Language>("id");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mode, setMode] = useState<ModeType>("only-qr");
   const [qrConfig, setQRConfig] = useState<QRConfig>(DEFAULT_QR_CONFIG);
   const [logoConfig, setLogoConfig] = useState<LogoConfig>(DEFAULT_LOGO_CONFIG);
   const [activeCanvas, setActiveCanvas] = useState<HTMLCanvasElement | null>(null);
+
+  // Initialize Language (Auto-detect Indonesia vs outside) & Theme (Light default)
+  useEffect(() => {
+    // Language: check localStorage or auto-detect based on user's browser locale
+    try {
+      const savedLang = localStorage.getItem("myqrmake_lang") as Language | null;
+      if (savedLang === "id" || savedLang === "en") {
+        setLang(savedLang);
+      } else {
+        const browserLocale = (typeof navigator !== "undefined" && navigator.language?.toLowerCase()) || "";
+        // If user is from Indonesia (id, id-ID, in), use Indonesian; otherwise use English
+        const detected = browserLocale.startsWith("id") || browserLocale.startsWith("in") ? "id" : "en";
+        setLang(detected);
+      }
+    } catch (e) {
+      // Storage access fallback
+    }
+
+    // Theme: Light is default
+    try {
+      const savedTheme = localStorage.getItem("myqrmake_theme") as "light" | "dark" | null;
+      if (savedTheme === "dark") {
+        setTheme("dark");
+        document.documentElement.classList.add("dark");
+      } else {
+        setTheme("light");
+        document.documentElement.classList.remove("dark");
+      }
+    } catch (e) {
+      // Storage access fallback
+    }
+  }, []);
+
+  const handleToggleLang = () => {
+    const nextLang: Language = lang === "id" ? "en" : "id";
+    setLang(nextLang);
+    try {
+      localStorage.setItem("myqrmake_lang", nextLang);
+    } catch (e) {}
+  };
+
+  const handleToggleTheme = () => {
+    const nextTheme = theme === "light" ? "dark" : "light";
+    setTheme(nextTheme);
+    try {
+      localStorage.setItem("myqrmake_theme", nextTheme);
+    } catch (e) {}
+    if (nextTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  // Active translation dictionary
+  const t = translations[lang];
 
   // Handle QR config changes
   const handleQRChange = useCallback((updated: Partial<QRConfig>) => {
@@ -100,20 +152,27 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-black selection:bg-sea selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-zinc-950 text-black dark:text-white transition-colors duration-200 selection:bg-sea selection:text-white">
       {/* Top Navbar */}
-      <Navbar onReset={handleReset} />
+      <Navbar
+        onReset={handleReset}
+        lang={lang}
+        onToggleLang={handleToggleLang}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+        t={t.navbar}
+      />
 
       {/* Hero Intro */}
-      <section className="border-b border-black/10 bg-white py-8 sm:py-10">
+      <section className="border-b border-black/10 dark:border-white/10 bg-white dark:bg-zinc-950 py-8 sm:py-10 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-black tracking-tight leading-tight">
-                MyQR Make
+              <h1 className="text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight leading-tight">
+                {t.hero.title}
               </h1>
-              <p className="text-sm sm:text-base text-black/60 max-w-2xl mt-1.5">
-                Generate high precision QR codes with seamless logo positioning and instant high resolution image and PDF export.
+              <p className="text-sm sm:text-base text-black/60 dark:text-white/60 max-w-2xl mt-1.5">
+                {t.hero.subtitle}
               </p>
             </div>
 
@@ -123,15 +182,15 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={handleLoadSampleLogo}
-                  className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-black/20 bg-white hover:border-sea hover:text-sea text-xs font-semibold text-black transition-all shadow-subtle active:scale-95"
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-black/20 dark:border-white/20 bg-white dark:bg-zinc-900 hover:border-sea hover:text-sea text-xs font-semibold text-black dark:text-white transition-all shadow-subtle active:scale-95 cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-sea" />
-                  <span>Try Mode 2 with Sample Logo</span>
+                  <span>{t.hero.sampleLogoBtn}</span>
                 </button>
               ) : (
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black text-white text-xs font-medium">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black dark:bg-white text-white dark:text-black text-xs font-medium">
                   <span className="w-2 h-2 rounded-full bg-sea" />
-                  <span>Custom Logo Active</span>
+                  <span>{t.hero.customLogoActive}</span>
                 </div>
               )}
             </div>
@@ -147,29 +206,35 @@ export default function Home() {
             {/* 1. Mode Selector Menu */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold tracking-wider text-black uppercase">
-                  Choose QR Code Style
+                <span className="text-xs font-bold tracking-wider text-black dark:text-white uppercase">
+                  {t.modeToggle.heading}
                 </span>
-                <span className="text-[11px] font-mono text-black/50">
-                  {mode === "only-qr" ? "Clean Standard QR" : "Custom Logo QR"}
+                <span className="text-[11px] font-mono text-black/50 dark:text-white/50">
+                  {mode === "only-qr" ? t.modeToggle.standardSublabel : t.modeToggle.logoSublabel}
                 </span>
               </div>
-              <ModeToggle currentMode={mode} onModeChange={handleModeChange} />
+              <ModeToggle
+                currentMode={mode}
+                onModeChange={handleModeChange}
+                t={t.modeToggle}
+              />
             </div>
 
             {/* 2. Control Panels in Card */}
-            <div className="p-6 rounded-2xl border border-black/15 bg-white shadow-card space-y-6">
+            <div className="p-6 rounded-2xl border border-black/15 dark:border-white/15 bg-white dark:bg-zinc-900 shadow-card space-y-6 transition-colors">
               {/* Input & QR Grid Customization with Logo Panel right below Section 1 */}
               <InputPanel
                 config={qrConfig}
                 onChange={handleQRChange}
                 hasLogo={mode === "qr-with-logo"}
+                t={t.inputPanel}
               >
                 {mode === "qr-with-logo" && (
                   <LogoPanel
                     config={logoConfig}
                     onChange={handleLogoChange}
                     onClear={handleClearLogo}
+                    t={t.logoPanel}
                   />
                 )}
               </InputPanel>
@@ -179,18 +244,19 @@ export default function Home() {
           {/* Right Column: Sticky Live Preview & Dual Export Actions (5 cols) */}
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
             {/* Live Canvas Card */}
-            <div className="p-6 rounded-2xl border border-black/15 bg-white shadow-card space-y-6">
+            <div className="p-6 rounded-2xl border border-black/15 dark:border-white/15 bg-white dark:bg-zinc-900 shadow-card space-y-6 transition-colors">
               <PreviewCanvas
                 qrConfig={qrConfig}
                 logoConfig={logoConfig}
                 mode={mode}
                 onCanvasReady={setActiveCanvas}
+                t={t.previewCanvas}
               />
 
               {/* Dual Export Options */}
-              <div className="pt-4 border-t border-black/10">
+              <div className="pt-4 border-t border-black/10 dark:border-white/10">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold tracking-wider text-black uppercase">
+                  <span className="text-xs font-bold tracking-wider text-black dark:text-white uppercase">
                     Dual Export Studio
                   </span>
                   <span className="text-[11px] font-medium text-sea">
@@ -202,18 +268,20 @@ export default function Home() {
                   qrConfig={qrConfig}
                   logoConfig={logoConfig}
                   mode={mode}
+                  lang={lang}
+                  t={t.exportBar}
                 />
               </div>
             </div>
 
             {/* Friendly Scannability Information */}
-            <div className="p-4 rounded-xl border border-black/10 bg-white space-y-2 text-xs text-black/70">
-              <div className="flex items-center gap-2 font-bold text-black">
+            <div className="p-4 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-zinc-900 space-y-2 text-xs text-black/70 dark:text-white/70 transition-colors">
+              <div className="flex items-center gap-2 font-bold text-black dark:text-white">
                 <Info className="w-4 h-4 text-sea" />
-                <span>Petunjuk Pemindaian</span>
+                <span>{t.infoCard.title}</span>
               </div>
               <p className="leading-relaxed">
-                QR code dibuat dengan ketahanan tinggi agar tetap terbaca jelas meskipun logo diletakkan di tengah. Kompatibel dengan semua kamera smartphone Android dan iPhone.
+                {t.infoCard.desc}
               </p>
             </div>
           </div>
@@ -221,7 +289,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer t={t.footer} />
     </div>
   );
 }
