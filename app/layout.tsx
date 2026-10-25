@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "LogoQR Studio · Minimalist High Precision QR & Logo Generator",
   description:
-    "Production-ready ultra minimalist QR code generator with dual menu modes, custom logo upload, flexible positioning, high error correction, and instant PDF/Image export.",
+    "Production ready ultra minimalist QR code generator with dual menu modes, custom logo upload, flexible positioning, high error correction, and instant PDF/Image export.",
   keywords: [
     "QR Code Generator",
     "Custom Logo QR",

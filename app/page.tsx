@@ -108,7 +108,7 @@ export default function Home() {
               </h1>
               <p className="text-sm sm:text-base text-black/60 max-w-2xl mt-1.5">
                 Generate high precision QR codes with seamless logo positioning, 
-                automatic 30% error correction, and instant high-res image and PDF export.
+                automatic 30% error correction, and instant high resolution image and PDF export.
               </p>
             </div>
 
@@ -207,8 +207,8 @@ export default function Home() {
                 <span>Architecture Guarantee</span>
               </div>
               <p className="leading-relaxed">
-                Rendered with Reed–Solomon Level H error correction (30% redundancy). 
-                Logo placement strictly prevents finder pattern overlap, ensuring zero-fail scanning on iOS and Android.
+                Rendered with Reed Solomon Level H error correction (30% redundancy). 
+                Logo placement strictly prevents finder pattern overlap, ensuring zero fail scanning on iOS and Android.
               </p>
             </div>
           </div>

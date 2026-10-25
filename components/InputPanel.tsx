@@ -22,7 +22,7 @@ interface InputPanelProps {
 const PRESETS = [
   { label: "URL", icon: LinkIcon, sample: "https://logoqrstudio.vercel.app" },
   { label: "Text", icon: Type, sample: "Welcome to LogoQR Studio 2026" },
-  { label: "Wi-Fi", icon: Wifi, sample: "WIFI:S:MyNetwork;T:WPA;P:SecurePass2026;;" },
+  { label: "WiFi", icon: Wifi, sample: "WIFI:S:MyNetwork;T:WPA;P:SecurePass2026;;" },
   { label: "Email", icon: Mail, sample: "mailto:hello@logoqrstudio.com?subject=Inquiry" },
   { label: "Contact", icon: User, sample: "BEGIN:VCARD\nVERSION:3.0\nFN:Nanda Revan\nEMAIL:nanda@example.com\nEND:VCARD" },
 ];
@@ -141,7 +141,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({ config, onChange }) => {
           <div className="flex items-center justify-between">
             <span className="text-xs text-black/70 font-medium">Dark Module Color</span>
             <span className="text-[10px] text-black/50 font-mono">
-              Strict 3-Color Palette
+              Strict 3 Color Palette
             </span>
           </div>
           <div className="grid grid-cols-2 gap-2">

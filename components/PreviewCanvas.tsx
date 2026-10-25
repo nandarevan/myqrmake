@@ -98,7 +98,7 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
             <span>Live Canvas</span>
           </div>
           <span className="text-[11px] text-black/50 hidden sm:inline">
-            1024 × 1024 Hi-Res Engine
+            1024 × 1024 High Resolution Engine
           </span>
         </div>
 

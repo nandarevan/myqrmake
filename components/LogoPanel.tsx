@@ -46,7 +46,7 @@ export const LogoPanel: React.FC<LogoPanelProps> = ({
         hasWarning: true,
         type: "file-size",
         message: `High file size (${(config.sizeBytes / (1024 * 1024)).toFixed(1)} MB). Large files may slow down rendering on mobile devices.`,
-        recommendation: "LogoQR Studio automatically renders high-DPI canvas downscaled.",
+        recommendation: "LogoQR Studio automatically renders high DPI canvas downscaled.",
       };
     }
 
@@ -56,7 +56,7 @@ export const LogoPanel: React.FC<LogoPanelProps> = ({
         hasWarning: true,
         type: "dimensions",
         message: `Large image dimensions (${config.width} × ${config.height}px). May consume higher canvas memory.`,
-        recommendation: "Auto-fitting preserves clarity while maintaining crisp scanning performance.",
+        recommendation: "Automatic fitting preserves clarity while maintaining crisp scanning performance.",
       };
     }
 
@@ -163,7 +163,7 @@ export const LogoPanel: React.FC<LogoPanelProps> = ({
               Click to browse or drag & drop logo
             </p>
             <p className="text-xs text-black/50 mt-1">
-              Supports transparent PNG, SVG, or high-res JPEG
+              Supports transparent PNG, SVG, or high resolution JPEG
             </p>
           </div>
         ) : (
@@ -225,7 +225,7 @@ export const LogoPanel: React.FC<LogoPanelProps> = ({
                 onClick={() => onChange({ scale: 0.2 })}
                 className="px-3 py-1 text-xs font-semibold rounded-md bg-sea text-white hover:bg-sea-700 transition-colors shadow-sm"
               >
-                Auto-fit to 20% Safe Zone
+                Fit to 20% Safe Zone
               </button>
             </div>
           )}

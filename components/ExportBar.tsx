@@ -130,7 +130,7 @@ export const ExportBar: React.FC<ExportBarProps> = ({
             ) : (
               <Download className="w-4 h-4 text-white" />
             )}
-            <span>Download High-Res Image</span>
+            <span>Download High Resolution Image</span>
           </button>
 
           {/* Resolution Selector Dropdown Toggle */}
