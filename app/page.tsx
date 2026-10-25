@@ -113,8 +113,7 @@ export default function Home() {
                 MyQR Make
               </h1>
               <p className="text-sm sm:text-base text-black/60 max-w-2xl mt-1.5">
-                Generate high precision QR codes with seamless logo positioning, 
-                automatic 30% error correction, and instant high resolution image and PDF export.
+                Generate high precision QR codes with seamless logo positioning and instant high resolution image and PDF export.
               </p>
             </div>
 

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://myqrmake.vercel.app"),
   title: "MyQR Make · Minimalist High Precision QR & Logo Generator",
   description:
-    "Generate custom QR codes with high precision logo positioning, automatic 30% error correction, and instant high resolution image and PDF export.",
+    "Generate custom QR codes with high precision logo positioning and instant high resolution image and PDF export.",
   keywords: [
     "QR Code Generator",
     "Custom Logo QR",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MyQR Make · Minimalist High Precision QR & Logo Generator",
     description:
-      "Generate custom QR codes with high precision logo positioning, automatic 30% error correction, and instant high resolution image and PDF export.",
+      "Generate custom QR codes with high precision logo positioning and instant high resolution image and PDF export.",
     url: "https://myqrmake.vercel.app",
     siteName: "MyQR Make",
     images: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MyQR Make · Minimalist High Precision QR & Logo Generator",
     description:
-      "Generate custom QR codes with high precision logo positioning, automatic 30% error correction, and instant high resolution image and PDF export.",
+      "Generate custom QR codes with high precision logo positioning and instant high resolution image and PDF export.",
     images: ["/og-image.jpg"],
   },
   icons: {

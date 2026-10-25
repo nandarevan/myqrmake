@@ -1,12 +1,6 @@
 "use strict";
 import React from "react";
 import {
-  Link as LinkIcon,
-  Type,
-  Wifi,
-  Mail,
-  User,
-  Shield,
   Layers,
   Palette,
   Maximize2,
@@ -21,14 +15,6 @@ interface InputPanelProps {
   children?: React.ReactNode;
 }
 
-const PRESETS = [
-  { label: "URL", icon: LinkIcon, sample: "https://myqrmake.vercel.app" },
-  { label: "Text", icon: Type, sample: "Welcome to MyQR Make 2026" },
-  { label: "WiFi", icon: Wifi, sample: "WIFI:S:MyNetwork;T:WPA;P:SecurePass2026;;" },
-  { label: "Email", icon: Mail, sample: "mailto:hello@myqrmake.com?subject=Inquiry" },
-  { label: "Contact", icon: User, sample: "BEGIN:VCARD\nVERSION:3.0\nFN:Nanda Revan\nEMAIL:nanda@example.com\nEND:VCARD" },
-];
-
 export const InputPanel: React.FC<InputPanelProps> = ({
   config,
   onChange,
@@ -39,38 +25,13 @@ export const InputPanel: React.FC<InputPanelProps> = ({
     <div className="space-y-6">
       {/* 1. Friendly Content Input Section */}
       <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <div>
-            <label className="text-xs font-bold tracking-wider text-black uppercase flex items-center gap-2">
-              <span>1. Enter Your Link or Text</span>
-            </label>
-            <p className="text-[11px] text-black/50 mt-0.5">
-              Ketik atau tempel link website, teks, atau media sosial
-            </p>
-          </div>
-        </div>
-
-        {/* Quick Presets */}
-        <div className="flex items-center gap-1.5 flex-wrap">
-          {PRESETS.map((preset) => {
-            const Icon = preset.icon;
-            const isActive = config.content === preset.sample;
-            return (
-              <button
-                key={preset.label}
-                type="button"
-                onClick={() => onChange({ content: preset.sample })}
-                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
-                  isActive
-                    ? "bg-sea text-white border border-sea shadow-sm"
-                    : "bg-white text-black/70 border border-black/15 hover:border-sea hover:text-sea"
-                }`}
-              >
-                <Icon className="w-3 h-3" />
-                <span>{preset.label}</span>
-              </button>
-            );
-          })}
+        <div>
+          <label className="text-xs font-bold tracking-wider text-black uppercase flex items-center gap-2">
+            <span>1. Enter Your Link or Text</span>
+          </label>
+          <p className="text-[11px] text-black/50 mt-0.5">
+            Ketik atau tempel link website, teks, atau media sosial
+          </p>
         </div>
 
         {/* Text Input / Textarea */}
