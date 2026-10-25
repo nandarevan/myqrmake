@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
-  Layers,
-  Palette,
-  Maximize2,
+  Link as LinkIcon,
+  Type,
+  Wifi,
+  Mail,
+  User,
   Check,
 } from "lucide-react";
 import { QRConfig, ModuleStyle, EyeStyle } from "@/types";
@@ -17,6 +19,16 @@ interface InputPanelProps {
   t?: Translations["inputPanel"];
 }
 
+type ContentCategory = "url" | "text" | "wifi" | "email" | "contact";
+
+const TYPE_CONFIGS = [
+  { id: "url" as ContentCategory, icon: LinkIcon },
+  { id: "text" as ContentCategory, icon: Type },
+  { id: "wifi" as ContentCategory, icon: Wifi },
+  { id: "email" as ContentCategory, icon: Mail },
+  { id: "contact" as ContentCategory, icon: User },
+];
+
 export const InputPanel: React.FC<InputPanelProps> = ({
   config,
   onChange,
@@ -24,10 +36,25 @@ export const InputPanel: React.FC<InputPanelProps> = ({
   children,
   t,
 }) => {
+  const [activeCategory, setActiveCategory] = useState<ContentCategory>("url");
+
   const labels = t || {
     section1Title: "1. Masukkan Tautan atau Teks Anda",
     section1Desc: "Ketik atau tempel link website, teks, atau media sosial",
-    placeholder: "Ketik atau tempel link di sini...",
+    typePresets: {
+      url: "URL",
+      text: "Teks",
+      wifi: "WiFi",
+      email: "Email",
+      contact: "Kontak",
+    },
+    placeholders: {
+      url: "Ketik atau tempel link website di sini...",
+      text: "Ketik teks atau catatan yang ingin dibuatkan QR di sini...",
+      wifi: "Ketik nama WiFi atau kata sandi jaringan di sini...",
+      email: "Ketik alamat email penerima atau pesan di sini...",
+      contact: "Ketik nama kontak, nomor telepon, atau detail vCard di sini...",
+    },
     chars: "karakter",
     section2TitleWithLogo: "3. Pengaturan Pola dan Desain",
     section2TitleNoLogo: "2. Pengaturan Pola dan Desain",
@@ -51,25 +78,52 @@ export const InputPanel: React.FC<InputPanelProps> = ({
     paletteInfo: "Palet 3 Warna Utama",
   };
 
+  const currentPlaceholder =
+    labels.placeholders[activeCategory] || labels.placeholders.url;
+
   return (
     <div className="space-y-6">
-      {/* 1. Friendly Content Input Section */}
+      {/* 1. Content Input Section */}
       <div className="space-y-3">
         <div>
           <label className="text-xs font-bold tracking-wider text-black dark:text-white uppercase flex items-center gap-2">
             <span>{labels.section1Title}</span>
           </label>
-          <p className="text-[11px] text-black/50 dark:text-white/50 mt-0.5">
+          <p className="text-[11px] text-black/50 dark:text-white/50 mt-0.5 text-justify">
             {labels.section1Desc}
           </p>
         </div>
 
-        {/* Text Input / Textarea */}
+        {/* Quick Format Type Category Selector (URL, Text, WiFi, Email, Contact) */}
+        <div className="flex items-center gap-1.5 flex-wrap">
+          {TYPE_CONFIGS.map((item) => {
+            const Icon = item.icon;
+            const isSelected = activeCategory === item.id;
+            const itemLabel = labels.typePresets[item.id];
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setActiveCategory(item.id)}
+                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-lg transition-all cursor-pointer ${
+                  isSelected
+                    ? "bg-sea text-white border border-sea shadow-sm"
+                    : "bg-white dark:bg-zinc-900 text-black/70 dark:text-white/70 border border-black/15 dark:border-white/15 hover:border-sea hover:text-sea dark:hover:border-sea"
+                }`}
+              >
+                <Icon className="w-3 h-3" />
+                <span>{itemLabel}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Text Input / Textarea with dynamic contextual placeholder */}
         <div className="relative">
           <textarea
             value={config.content}
             onChange={(e) => onChange({ content: e.target.value })}
-            placeholder={labels.placeholder}
+            placeholder={currentPlaceholder}
             rows={3}
             className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-black/20 dark:border-white/20 bg-white dark:bg-zinc-950 text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none focus:border-sea focus:ring-2 focus:ring-sea/20 transition-all resize-none font-mono"
           />

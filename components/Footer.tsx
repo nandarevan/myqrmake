@@ -107,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
               </button>
             </div>
 
-            <div className="text-xs text-black/70 dark:text-white/70 leading-relaxed space-y-2">
+            <div className="text-xs text-black/70 dark:text-white/70 leading-relaxed space-y-2 text-justify">
               {modalType === "privacy" ? (
                 <>
                   <p>{labels.privacyModal.p1}</p>

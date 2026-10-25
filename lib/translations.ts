@@ -24,7 +24,20 @@ export interface Translations {
   inputPanel: {
     section1Title: string;
     section1Desc: string;
-    placeholder: string;
+    typePresets: {
+      url: string;
+      text: string;
+      wifi: string;
+      email: string;
+      contact: string;
+    };
+    placeholders: {
+      url: string;
+      text: string;
+      wifi: string;
+      email: string;
+      contact: string;
+    };
     chars: string;
     section2TitleWithLogo: string;
     section2TitleNoLogo: string;
@@ -153,7 +166,20 @@ export const translations: Record<Language, Translations> = {
     inputPanel: {
       section1Title: "1. Masukkan Tautan atau Teks Anda",
       section1Desc: "Ketik atau tempel link website, teks, atau media sosial",
-      placeholder: "Ketik atau tempel link di sini...",
+      typePresets: {
+        url: "URL",
+        text: "Teks",
+        wifi: "WiFi",
+        email: "Email",
+        contact: "Kontak",
+      },
+      placeholders: {
+        url: "Ketik atau tempel link website di sini...",
+        text: "Ketik teks atau catatan yang ingin dibuatkan QR di sini...",
+        wifi: "Ketik nama WiFi atau kata sandi jaringan di sini...",
+        email: "Ketik alamat email penerima atau pesan di sini...",
+        contact: "Ketik nama kontak, nomor telepon, atau detail vCard di sini...",
+      },
       chars: "karakter",
       section2TitleWithLogo: "3. Pengaturan Pola dan Desain",
       section2TitleNoLogo: "2. Pengaturan Pola dan Desain",
@@ -282,7 +308,20 @@ export const translations: Record<Language, Translations> = {
     inputPanel: {
       section1Title: "1. Enter Your Link or Text",
       section1Desc: "Type or paste website link, text, or social media",
-      placeholder: "Type or paste your link here...",
+      typePresets: {
+        url: "URL",
+        text: "Text",
+        wifi: "WiFi",
+        email: "Email",
+        contact: "Contact",
+      },
+      placeholders: {
+        url: "Type or paste website link here...",
+        text: "Type text or notes to encode in the QR here...",
+        wifi: "Type WiFi network name or password details here...",
+        email: "Type recipient email address or subject here...",
+        contact: "Type contact name, phone number, or vCard info here...",
+      },
       chars: "chars",
       section2TitleWithLogo: "3. Grid & Pattern Styling",
       section2TitleNoLogo: "2. Grid & Pattern Styling",

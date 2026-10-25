@@ -145,7 +145,7 @@ export const LogoPanel: React.FC<LogoPanelProps> = ({
             <label className="text-xs font-bold tracking-wider text-black dark:text-white uppercase flex items-center gap-2">
               <span>{labels.sectionTitle}</span>
             </label>
-            <p className="text-[11px] text-black/50 dark:text-white/50 mt-0.5">
+            <p className="text-[11px] text-black/50 dark:text-white/50 mt-0.5 text-justify">
               {labels.sectionDesc}
             </p>
           </div>
@@ -241,10 +241,10 @@ export const LogoPanel: React.FC<LogoPanelProps> = ({
               <p className="text-xs font-bold text-black dark:text-white leading-tight">
                 {labels.advisoryTitle}
               </p>
-              <p className="text-xs text-black/80 dark:text-white/80 mt-1 leading-relaxed">
+              <p className="text-xs text-black/80 dark:text-white/80 mt-1 leading-relaxed text-justify">
                 {warning.message}
               </p>
-              <p className="text-[11px] text-black/50 dark:text-white/50 mt-1">
+              <p className="text-[11px] text-black/50 dark:text-white/50 mt-1 text-justify">
                 {warning.recommendation}
               </p>
             </div>

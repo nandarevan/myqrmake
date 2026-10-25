@@ -226,7 +226,7 @@ export const ExportBar: React.FC<ExportBarProps> = ({
               <h3 className="text-base font-bold text-black dark:text-white">
                 {labels.modal.title}
               </h3>
-              <p className="text-xs text-black/70 dark:text-white/70 leading-relaxed">
+              <p className="text-xs text-black/70 dark:text-white/70 leading-relaxed text-justify">
                 {congratsModal.type === "image"
                   ? labels.modal.descImage
                   : labels.modal.descPdf}

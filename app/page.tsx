@@ -124,31 +124,26 @@ export default function Home() {
     setMode("only-qr");
   }, []);
 
-  // Mode change handler with automatic logo loading
-  const handleModeChange = useCallback(
-    (newMode: ModeType) => {
-      setMode(newMode);
-      if (newMode === "qr-with-logo" && !logoConfig.dataUrl) {
-        setLogoConfig({
-          file: null,
-          dataUrl: "/logo_square.png",
-          name: "logo_square.png",
-          sizeBytes: 132465,
-          width: 512,
-          height: 512,
-          position: "center",
-          scale: 0.22,
-          shape: "rounded",
-          padding: 8,
-        });
-      }
-    },
-    [logoConfig.dataUrl]
-  );
+  // Mode change handler without forcing logo
+  const handleModeChange = useCallback((newMode: ModeType) => {
+    setMode(newMode);
+  }, []);
 
-  // Load sample logo helper
+  // Load sample logo helper (only when explicitly requested)
   const handleLoadSampleLogo = () => {
-    handleModeChange("qr-with-logo");
+    setMode("qr-with-logo");
+    setLogoConfig({
+      file: null,
+      dataUrl: "/logo_square.png",
+      name: "logo_square.png",
+      sizeBytes: 132465,
+      width: 512,
+      height: 512,
+      position: "center",
+      scale: 0.22,
+      shape: "rounded",
+      padding: 8,
+    });
   };
 
   return (
@@ -171,7 +166,7 @@ export default function Home() {
               <h1 className="text-3xl sm:text-4xl font-extrabold text-black dark:text-white tracking-tight leading-tight">
                 {t.hero.title}
               </h1>
-              <p className="text-sm sm:text-base text-black/60 dark:text-white/60 max-w-2xl mt-1.5">
+              <p className="text-sm sm:text-base text-black/60 dark:text-white/60 max-w-2xl mt-1.5 text-justify">
                 {t.hero.subtitle}
               </p>
             </div>
@@ -280,7 +275,7 @@ export default function Home() {
                 <Info className="w-4 h-4 text-sea" />
                 <span>{t.infoCard.title}</span>
               </div>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-justify">
                 {t.infoCard.desc}
               </p>
             </div>
