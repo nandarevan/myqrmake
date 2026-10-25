@@ -72,21 +72,31 @@ export default function Home() {
     setMode("only-qr");
   }, []);
 
+  // Mode change handler with automatic logo loading
+  const handleModeChange = useCallback(
+    (newMode: ModeType) => {
+      setMode(newMode);
+      if (newMode === "qr-with-logo" && !logoConfig.dataUrl) {
+        setLogoConfig({
+          file: null,
+          dataUrl: "/logo_myqrmake.jpg",
+          name: "logo_myqrmake.jpg",
+          sizeBytes: 1249990,
+          width: 800,
+          height: 800,
+          position: "center",
+          scale: 0.22,
+          shape: "rounded",
+          padding: 8,
+        });
+      }
+    },
+    [logoConfig.dataUrl]
+  );
+
   // Load sample logo helper
   const handleLoadSampleLogo = () => {
-    setMode("qr-with-logo");
-    setLogoConfig({
-      file: null,
-      dataUrl: "/logo_myqrmake.jpg",
-      name: "logo_myqrmake.jpg",
-      sizeBytes: 1249990,
-      width: 800,
-      height: 800,
-      position: "center",
-      scale: 0.22,
-      shape: "rounded",
-      padding: 8,
-    });
+    handleModeChange("qr-with-logo");
   };
 
   return (
@@ -149,7 +159,7 @@ export default function Home() {
                   {mode === "only-qr" ? "Standard Pure Code" : "Logo Integration"}
                 </span>
               </div>
-              <ModeToggle currentMode={mode} onModeChange={setMode} />
+              <ModeToggle currentMode={mode} onModeChange={handleModeChange} />
             </div>
 
             {/* 2. Control Panels in Card */}

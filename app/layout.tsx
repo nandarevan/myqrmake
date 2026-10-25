@@ -20,6 +20,14 @@ export const metadata: Metadata = {
       "Generate clean QR codes and embed custom brand logos with flexible positioning and vector PDF export.",
     type: "website",
   },
+  icons: {
+    icon: [
+      { url: "/logo_myqrmake.jpg" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/logo_myqrmake.jpg",
+    apple: "/logo_myqrmake.jpg",
+  },
 };
 
 export const viewport: Viewport = {
