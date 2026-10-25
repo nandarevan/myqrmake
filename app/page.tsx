@@ -239,7 +239,7 @@ export default function Home() {
           {/* Right Column: Sticky Live Preview & Dual Export Actions (5 cols) */}
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
             {/* Live Canvas Card */}
-            <div className="p-6 rounded-2xl border border-black/15 dark:border-white/15 bg-white dark:bg-zinc-900 shadow-card space-y-6 transition-colors">
+            <div className="p-6 rounded-2xl border border-black/15 dark:border-white/15 bg-white dark:bg-zinc-900 shadow-card transition-colors">
               <PreviewCanvas
                 qrConfig={qrConfig}
                 logoConfig={logoConfig}
@@ -249,7 +249,7 @@ export default function Home() {
               />
 
               {/* Dual Export Options */}
-              <div className="pt-4 border-t border-black/10 dark:border-white/10">
+              <div className="pt-5">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-bold tracking-wider text-black dark:text-white uppercase">
                     Dual Export Studio

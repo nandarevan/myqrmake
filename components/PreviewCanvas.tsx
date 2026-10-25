@@ -205,13 +205,15 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
       </div>
 
       {/* Status Footer under Canvas */}
-      <div className="w-full pt-3 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-xs">
+      <div className="w-full py-3 border-y border-black/10 dark:border-white/10 flex items-center justify-center flex-wrap gap-x-3 gap-y-1 text-xs text-center">
         <div className="flex items-center gap-1.5 text-black/70 dark:text-white/70">
-          <ShieldCheck className="w-4 h-4 text-sea" />
+          <ShieldCheck className="w-4 h-4 text-sea shrink-0" />
           <span className="font-semibold text-black dark:text-white">{labels.qualityBadge}</span>
-          <span className="text-black/40 dark:text-white/40">·</span>
+          <span className="text-black/40 dark:text-white/40 font-bold">·</span>
           <span>{labels.guarantee}</span>
         </div>
+
+        <span className="text-black/30 dark:text-white/30 hidden sm:inline font-bold">·</span>
 
         <div className="text-[11px] font-mono text-black/50 dark:text-white/50">
           {mode === "qr-with-logo" ? (
