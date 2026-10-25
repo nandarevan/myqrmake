@@ -16,10 +16,18 @@ export const Footer: React.FC = () => {
       <footer className="w-full border-t border-black/10 bg-white py-6 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-black/60">
           {/* Copyright & Creator Info */}
-          <div className="text-center md:text-left">
-            <span>© 2026 MyQR Make. Dibuat oleh </span>
-            <strong className="font-semibold text-black">Nanda Revan Saputro</strong>
-            <span>. Hak cipta dilindungi.</span>
+          <div className="flex items-center gap-3 text-center md:text-left flex-wrap justify-center md:justify-start">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo_myqrmake.png"
+              alt="MyQR Make"
+              className="h-7 w-auto object-contain"
+            />
+            <div>
+              <span>© 2026 MyQR Make. Dibuat oleh </span>
+              <strong className="font-semibold text-black">Nanda Revan Saputro</strong>
+              <span>. Hak cipta dilindungi.</span>
+            </div>
           </div>
 
           {/* Navigation & Scroll To Top */}

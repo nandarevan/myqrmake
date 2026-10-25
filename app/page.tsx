@@ -79,11 +79,11 @@ export default function Home() {
       if (newMode === "qr-with-logo" && !logoConfig.dataUrl) {
         setLogoConfig({
           file: null,
-          dataUrl: "/logo_myqrmake.jpg",
-          name: "logo_myqrmake.jpg",
-          sizeBytes: 1249990,
-          width: 800,
-          height: 800,
+          dataUrl: "/logo_square.png",
+          name: "logo_square.png",
+          sizeBytes: 132465,
+          width: 512,
+          height: 512,
           position: "center",
           scale: 0.22,
           shape: "rounded",

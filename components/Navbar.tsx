@@ -11,24 +11,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onReset }) => {
     <header className="sticky top-0 z-50 w-full border-b border-black/10 bg-white/95 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center relative shadow-sm group transition-transform hover:scale-105 overflow-hidden border border-black/10">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo_myqrmake.jpg"
-              alt="MyQR Make Logo"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                (e.currentTarget as HTMLElement).style.display = "none";
-              }}
+              src="/logo_myqrmake.png"
+              alt="MyQR Make"
+              className="h-10 sm:h-11 w-auto object-contain transition-transform hover:scale-105"
             />
-            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-sea rounded-full ring-2 ring-white animate-pulse" />
           </div>
-          <div>
-            <span className="font-bold text-lg tracking-tight text-black block leading-tight">
-              MyQR Make
-            </span>
-            <p className="text-xs text-black/60 hidden sm:block">
+          <div className="hidden lg:block pl-4 border-l border-black/15">
+            <p className="text-xs text-black/60 font-medium">
               Ultra Minimalist High Precision QR & Logo Engine
             </p>
           </div>
