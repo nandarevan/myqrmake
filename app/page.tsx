@@ -153,10 +153,10 @@ export default function Home() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold tracking-wider text-black uppercase">
-                  Studio Workflow Mode
+                  Choose QR Code Style
                 </span>
                 <span className="text-[11px] font-mono text-black/50">
-                  {mode === "only-qr" ? "Standard Pure Code" : "Logo Integration"}
+                  {mode === "only-qr" ? "Clean Standard QR" : "Custom Logo QR"}
                 </span>
               </div>
               <ModeToggle currentMode={mode} onModeChange={handleModeChange} />
